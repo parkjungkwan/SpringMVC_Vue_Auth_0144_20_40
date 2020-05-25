@@ -1,11 +1,9 @@
-import Vue from "vue";
-import Vuex from "vuex";
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
-});
+import Vue from 'vue'
+import Vuex from 'vuex'
+import crawling from "./crawling";
+Vue.use(Vuex)
+export const store = new Vuex.Store({
+  modules : {
+    crawling
+  }
+})
