@@ -15,7 +15,7 @@ public class Box<T> {
     // put, get(k), get(map), clear
     public void put(String s, T t){box.put(s, t);}
     public T get(String k){
-        Function<String , T> s = box::get;
+        Function<String , T> s = p->box.get(p);
         return s.apply(k);
     }
     public HashMap<String,T> get(){return box;}
