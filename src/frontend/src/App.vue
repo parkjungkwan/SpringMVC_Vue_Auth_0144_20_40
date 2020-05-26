@@ -1,17 +1,6 @@
 <template>
-  <div id="app">
-  <Home/>
-  </div>
+    <v-content>
+      <router-view/>
+    </v-content>
 </template>
-<script>
-import Home from './components/Home'
-export default {
-  components: {
-    Home
-  }
 
-}
-</script>
-<style>
-
-</style>
