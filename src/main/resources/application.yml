@@ -26,10 +26,9 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
-
 server:
+  port: 5000
   servlet:
     encoding:
-      charset=UTF-8
-    force:
-      true
+      charset: UTF-8
+    force: true
