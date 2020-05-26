@@ -30,12 +30,12 @@ const mutations = {
     state.bugsmusic = [];
     state.count = data.count;
     data.list.forEach(item => {
-      state.bugsmusic.push([
-        item.seq,
-        item.artists,
-        item.title,
-        item.thumbnail
-      ]);
+      state.bugsmusic.push({
+        seq: item.seq,
+        artist: item.artists,
+        title: item.title,
+        thumbnail: item.thumbnail
+      });
     });
   }
 };
