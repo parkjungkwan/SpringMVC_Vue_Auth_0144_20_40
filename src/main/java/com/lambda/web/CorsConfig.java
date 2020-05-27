@@ -1,4 +1,4 @@
-package com.lambda.demo;
+package com.lambda.web;
 
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

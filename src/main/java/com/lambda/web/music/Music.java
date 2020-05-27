@@ -1,4 +1,4 @@
-package com.lambda.demo.music;
+package com.lambda.web.music;
 
 import lombok.*;
 import javax.persistence.*;

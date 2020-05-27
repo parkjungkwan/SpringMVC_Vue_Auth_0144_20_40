@@ -1,4 +1,4 @@
-package com.lambda.demo;
+package com.lambda.web;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -1,4 +1,4 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

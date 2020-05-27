@@ -1,4 +1,4 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

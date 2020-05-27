@@ -1,4 +1,4 @@
-package com.lambda.demo;
+package com.lambda.web;
 
 import javax.sql.DataSource;
 
@@ -22,7 +22,7 @@ public class MybatisConfig {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath:com/lambda/demo/mappers/*.xml"));
+        sessionFactory.setMapperLocations(resolver.getResources("classpath:com/lambda/web/mappers/*.xml"));
         return sessionFactory.getObject();
     }
 

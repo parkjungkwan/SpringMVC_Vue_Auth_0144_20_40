@@ -1,4 +1,4 @@
-package com.lambda.demo;
+package com.lambda.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

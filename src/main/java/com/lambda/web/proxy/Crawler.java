@@ -1,4 +1,4 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.util.ArrayList;
 import java.util.HashMap;

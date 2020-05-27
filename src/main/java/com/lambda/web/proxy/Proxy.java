@@ -1,4 +1,4 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 @Component("pxy") @Lazy
 public class Proxy {

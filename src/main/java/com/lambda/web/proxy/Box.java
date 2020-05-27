@@ -1,12 +1,10 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.springframework.context.annotation.Lazy;
-import org.springframework.expression.TypedValue;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Component @Lazy
 public class Box<T> {

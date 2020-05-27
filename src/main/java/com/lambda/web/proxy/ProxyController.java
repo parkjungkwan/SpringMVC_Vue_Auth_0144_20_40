@@ -1,4 +1,4 @@
-package com.lambda.demo.proxy;
+package com.lambda.web.proxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 @RestController
 public class ProxyController{
