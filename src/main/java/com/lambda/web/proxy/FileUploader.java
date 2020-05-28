@@ -1,13 +1,12 @@
 package com.lambda.web.proxy;
 
 import com.lambda.web.soccer.Player;
-import com.lambda.web.soccer.PlayerDTO;
 import com.lambda.web.soccer.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
+import com.lambda.web.soccer.PlayerDTO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,6 +17,7 @@ import java.util.List;
 public class FileUploader extends Proxy{
     @Autowired Inventory<String> inventory;
     @Autowired PlayerRepository playerRepository;
+
 
     public void upload(){
         inventory.clear();
@@ -35,23 +35,23 @@ public class FileUploader extends Proxy{
         print(inventory.get().get(0).toString());
         String[] arr = inventory.get().get(0).toString().split(",");
         // "2000003","유동우","K10","YOU,  DONGWOO","","","DF","40","","07-MAR-1978","1","177","70"
-        Player p = new Player();
-        p.setPlayerId(arr[0]);
-        p.setPlayerName(arr[1]);
-        p.setePlayerName(arr[3]);
-        p.setNickname(arr[4]);
-        p.setJoinYyyy(arr[5]);
-        p.setPosition(arr[6]);
-        p.setBackNo(arr[7]);
-        p.setNation(arr[8]);
-        p.setBirthDate(arr[9]);
-        p.setSolar(arr[10]);
-        p.setHeight(arr[11]);
-        p.setWeight(arr[12]);
+        Player player = new Player();
+        player.setPlayerId(arr[0]);
+        player.setPlayerName(arr[1]);
+        player.setePlayerName(arr[3]);
+        player.setNickname(arr[4]);
+        player.setJoinYyyy(arr[5]);
+        player.setPosition(arr[6]);
+        player.setBackNo(arr[7]);
+        player.setNation(arr[8]);
+        player.setBirthDate(arr[9]);
+        player.setSolar(arr[10]);
+        player.setHeight(arr[11]);
+        player.setWeight(arr[12]);
         print("***************************\n");
-        print(p.toString());
+        print(player.toString());
         // p.setTeam();
-        playerRepository.save(p);
+        playerRepository.save(player);
 
     }
 }

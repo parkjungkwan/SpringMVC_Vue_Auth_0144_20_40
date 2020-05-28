@@ -21,11 +21,11 @@ public class ProxyController{
     public HashMap<String,Object> bugsmusic(@RequestBody String searchWord){
         pxy.print("넘어온 키워드: "+searchWord);
         box.clear();
-        ArrayList<HashMap<String, String>> list = crawler.bugsMusic();
-        box.put("list", list);
+        crawler.bugsMusic();
+        //box.put("list", list);
         pxy.print("*********");
-        pxy.print("조회한 수: "+list.size());
-        box.put("count", list.size());
+        //pxy.print("조회한 수: "+list.size());
+        box.put("count", "0");
         return box.get();
 
     }
