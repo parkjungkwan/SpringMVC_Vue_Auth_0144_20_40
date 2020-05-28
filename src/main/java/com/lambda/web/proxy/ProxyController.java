@@ -32,7 +32,7 @@ public class ProxyController{
     @GetMapping("/soccer/{searchWord}")
     public HashMap<String,String> soccer(@PathVariable String searchWord){
         pxy.print("넘어온 키워드:"+ searchWord);
-
+        uploader.upload();
         return null;
     }
 }

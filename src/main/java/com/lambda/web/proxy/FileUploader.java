@@ -1,6 +1,7 @@
 package com.lambda.web.proxy;
 
 import com.lambda.web.soccer.Player;
+import com.lambda.web.soccer.PlayerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Service("uploader") @Lazy
 public class FileUploader extends Proxy{
-    @Autowired Player player;
+    @Autowired PlayerDTO player;
     @Autowired Inventory<String> inventory;
 
     public void upload(){

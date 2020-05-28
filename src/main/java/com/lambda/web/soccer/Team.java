@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="team")
-@Component
+
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
