@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import javax.validation.constraints.NotNull;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="team")
+@Component
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

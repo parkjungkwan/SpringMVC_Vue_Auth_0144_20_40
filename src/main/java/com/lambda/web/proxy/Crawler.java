@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@Component("crawler")  @Lazy
+@Service("crawler")  @Lazy
 public class Crawler extends Proxy{
     @Autowired Inventory<HashMap<String, String>> inventory;
     @Autowired Box<String> box;

@@ -1,15 +1,18 @@
 package com.lambda.web.soccer;
 
 
+import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="player")
+@Component
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

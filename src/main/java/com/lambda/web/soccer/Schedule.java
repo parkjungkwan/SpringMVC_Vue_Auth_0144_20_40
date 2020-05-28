@@ -2,12 +2,15 @@ package com.lambda.web.soccer;
 
 
 import lombok.*;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="schedule")
+@Component
 public class Schedule {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheNo;

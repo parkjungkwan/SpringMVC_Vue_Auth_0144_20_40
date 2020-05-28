@@ -10,7 +10,7 @@ const actions = {
   async search({ commit }, searchWord) {
     alert("검색어: " + searchWord);
     axios
-      .post(state.context + `bugsmusic`, searchWord, {
+      .post(state.context + `bugsmusic`,searchWord, {
         authorization: "JWT fefege..",
         Accept: "application/json",
         "Content-Type": "application/json"

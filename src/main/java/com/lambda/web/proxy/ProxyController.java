@@ -1,10 +1,8 @@
 package com.lambda.web.proxy;
 
+import com.lambda.web.soccer.Player;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +12,10 @@ import java.util.HashMap;
 public class ProxyController{
     @Autowired Box<Object> box;
     @Autowired Crawler crawler;
+    @Autowired FileUploader uploader;
     @Autowired Proxy pxy;
+//    @Autowired FileUploader loader;
+
 
     @PostMapping("/bugsmusic")
     public HashMap<String,Object> bugsmusic(@RequestBody String searchWord){
@@ -27,5 +28,11 @@ public class ProxyController{
         box.put("count", list.size());
         return box.get();
 
+    }
+    @GetMapping("/soccer/{searchWord}")
+    public HashMap<String,String> soccer(@PathVariable String searchWord){
+        pxy.print("넘어온 키워드:"+ searchWord);
+
+        return null;
     }
 }
