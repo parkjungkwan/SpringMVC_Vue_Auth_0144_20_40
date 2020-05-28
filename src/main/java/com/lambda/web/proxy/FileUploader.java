@@ -2,6 +2,7 @@ package com.lambda.web.proxy;
 
 import com.lambda.web.soccer.Player;
 import com.lambda.web.soccer.PlayerDTO;
+import com.lambda.web.soccer.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,8 @@ import java.util.List;
 
 @Service("uploader") @Lazy
 public class FileUploader extends Proxy{
-    @Autowired PlayerDTO player;
     @Autowired Inventory<String> inventory;
+    @Autowired PlayerRepository playerRepository;
 
     public void upload(){
         inventory.clear();
@@ -30,8 +31,27 @@ public class FileUploader extends Proxy{
             print("파일 리딩 에러");
             e.printStackTrace();
         }
-        print("--------------------------------------");
+        print("--------------------------------------\n");
         print(inventory.get().get(0).toString());
+        String[] arr = inventory.get().get(0).toString().split(",");
+        // "2000003","유동우","K10","YOU,  DONGWOO","","","DF","40","","07-MAR-1978","1","177","70"
+        Player p = new Player();
+        p.setPlayerId(arr[0]);
+        p.setPlayerName(arr[1]);
+        p.setePlayerName(arr[3]);
+        p.setNickname(arr[4]);
+        p.setJoinYyyy(arr[5]);
+        p.setPosition(arr[6]);
+        p.setBackNo(arr[7]);
+        p.setNation(arr[8]);
+        p.setBirthDate(arr[9]);
+        p.setSolar(arr[10]);
+        p.setHeight(arr[11]);
+        p.setWeight(arr[12]);
+        print("***************************\n");
+        print(p.toString());
+        // p.setTeam();
+        playerRepository.save(p);
 
     }
 }

@@ -3,6 +3,7 @@ package com.lambda.web.soccer;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -10,9 +11,9 @@ import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity(name="player")
-
+@Lazy
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,8 @@ public class Player {
     @Column(length = 10) private String height;
     @Column(length = 10) private String weight;
 
-    @Builder Player(String ePlayerName,
+
+    @Builder Player(String playerId, String playerName, String ePlayerName,
              String nickname,
              String joinYyyy,
              String position,
@@ -41,6 +43,8 @@ public class Player {
              String solar,
              String height,
              String weight){
+        this.playerId = playerId;
+        this.playerName = playerName;
         this.ePlayerName=ePlayerName;
         this.nickname=nickname;
         this.joinYyyy=joinYyyy;
@@ -54,7 +58,8 @@ public class Player {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id") @NotNull
+    @JoinColumn(name = "team_id")
     private Team team;
+
 
 }
