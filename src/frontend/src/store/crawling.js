@@ -9,19 +9,33 @@ const state = {
 const actions = {
   async search({ commit }, searchWord) {
     alert("검색어: " + searchWord);
-    axios
-      .post(state.context + `bugsmusic`,searchWord, {
-        authorization: "JWT fefege..",
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      })
-      .then(({ data }) => {
-        commit("SEARCH", data);
-        router.push("/retriever");
-      })
-      .catch(() => {
-        alert("통신 실패 !");
-      });
+    switch (searchWord) {
+      case '네이버영화' :
+        axios
+            .get(state.context+`naver-movie/${searchWord}`)
+            .then(()=>{})
+            .catch(()=>{})
+        break
+      case '벅스뮤직' :
+        axios
+            .post(state.context + `bugsmusic`,searchWord, {
+              authorization: "JWT fefege..",
+              Accept: "application/json",
+              "Content-Type": "application/json"
+            })
+            .then(({ data }) => {
+              commit("SEARCH", data);
+              router.push("/retriever");
+            })
+            .catch(() => {
+              alert("통신 실패 !");
+            });
+        break
+    }
+    
+
+
+    
   }
 };
 const mutations = {

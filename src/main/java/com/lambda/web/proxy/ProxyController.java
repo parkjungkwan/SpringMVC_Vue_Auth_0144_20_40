@@ -20,6 +20,12 @@ public class ProxyController{
     @Autowired MusicRepository musicRepository;
 //    @Autowired FileUploader loader;
 
+    @GetMapping("naver-movie/{searchWord}")
+    public void naverMovie(@PathVariable String searchWord){
+        pxy.print("넘어온 키워드: "+searchWord);
+        crawler.naverMovie();
+    }
+
 
     @PostMapping("/bugsmusic")
     public HashMap<String,Object> bugsmusic(@RequestBody String searchWord){
@@ -27,6 +33,7 @@ public class ProxyController{
         box.clear();
         if(musicRepository.count() == 0) crawler.bugsMusic();
         List<Music> list = musicRepository.findAll();
+        pxy.print("count :"+list.size());
         box.put("list", list);
         box.put("count", list.size());
         return box.get();

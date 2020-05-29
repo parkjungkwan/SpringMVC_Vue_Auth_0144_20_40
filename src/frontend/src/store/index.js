@@ -5,6 +5,6 @@ import soccer from "./soccer"
 Vue.use(Vuex)
 export const store = new Vuex.Store({
   modules: {
-    crawling,soccer
+    crawling, soccer
   }
 })
