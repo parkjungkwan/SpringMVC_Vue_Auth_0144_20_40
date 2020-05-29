@@ -11,12 +11,12 @@
     <update id="updateMovie"
             parameterType="com.lambda.web.music.MovieDTO">
         update set title = #{title} from movie
-        where movie_seq like 'movieSeq'
+        where movie_seq like #{movieSeq}
     </update>
 
     <delete id="deleteMovie"
             parameterType="com.lambda.web.music.MovieDTO">
-        delete from movie where movie_seq like 'movieSeq'
+        delete from movie where movie_seq like #{movieSeq}
     </delete>
     <select id="selectMovies" resultType="com.lambda.web.music.MovieDTO">
        select movie_seq movieSeq, rank, title, rank_date rankDate
@@ -30,6 +30,6 @@
     </select>
     <select id="countMovies" resultType="int">
       select count(*)
-      from users
+      from movie
     </select>
 </mapper>
