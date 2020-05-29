@@ -1,5 +1,9 @@
 package com.lambda.web.mappers;
 
-public class MovieMapper {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface MovieMapper {
+    public void  insertMovie();
 
 }
