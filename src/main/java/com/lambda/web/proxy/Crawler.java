@@ -59,7 +59,7 @@ public class Crawler extends Proxy{
                     .execute();
             Document d = homepage.parse();
             Elements arr = d.select("div.tit3");
-            Elements date = d.select("");
+            Elements date = d.select("p.r_date");
             Movie movie = null;
             for(int i=0;i < arr.size(); i++){
                 movie = new Movie();
@@ -72,7 +72,7 @@ public class Crawler extends Proxy{
         }catch(Exception e){
             print("에러 발생");
         }
-        print("******************** 크롤링 결과 *****************\n");
+        print("******************** 크롤링 결과 *****************");
 
     }
 }
