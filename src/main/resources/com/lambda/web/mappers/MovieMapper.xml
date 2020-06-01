@@ -25,10 +25,11 @@
       limit #{rowStart}, #{pageSize}
 
     </select>
-    <select id="selectMovie" resultType="com.lambda.web.music.MovieDTO">
+    <select id="selectMovie" resultType="com.lambda.web.music.MovieDTO"
+                                    parameterType="string">
       select movie_seq movieSeq, rank, title, rank_date rankDate
       from movie
-      where movie_seq = #{movieSeq}
+      where movie_seq = #{value}
     </select>
     <select id="count" resultType="int">
       select count(*)
