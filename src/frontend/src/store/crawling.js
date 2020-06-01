@@ -12,7 +12,7 @@ const actions = {
     switch (searchWord) {
       case '네이버영화' :
         axios
-            .get(state.context+`naver-movie/${searchWord}`)
+            .get(state.context+`movie/list/1/${searchWord}`)
             .then(()=>{})
             .catch(()=>{})
         break
