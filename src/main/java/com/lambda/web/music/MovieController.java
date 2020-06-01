@@ -33,7 +33,10 @@ public class MovieController {
         IFunction<Pager, List<MovieDTO>> f = p ->  movieMapper.selectMovies(p);
         List<MovieDTO> l = f.apply(pager);
         pxy.print("***********");
-        pxy.print(l.get(0).toString());
+        for(MovieDTO m : l){
+            pxy.print(m.toString());
+        }
+
         return l;
     }
 }

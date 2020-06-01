@@ -8,11 +8,12 @@ const state = {
 };
 const actions = {
   async search({ commit }, searchWord) {
-    alert("검색어: " + searchWord);
+
     switch (searchWord) {
       case '네이버영화' :
+        alert("검색어: " + searchWord);
         axios
-            .get(state.context+`movie/list/1/${searchWord}`)
+            .get(state.context+`movie/list/0/${searchWord}`)
             .then(()=>{})
             .catch(()=>{})
         break
