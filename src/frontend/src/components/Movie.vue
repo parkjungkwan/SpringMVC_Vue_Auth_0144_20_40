@@ -24,7 +24,7 @@
   <div class="text-center" >
     <div style="margin: 0 auto; width: 500px; height: 100px">
       <span v-if ='existPrev' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">이전</span>
-      <span v-for='i of arr' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i + 5}}</span>
+      <span v-for='i of 5' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i + 5}}</span>
       <span v-if ='existNext' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">다음</span>
     </div>
 
@@ -41,14 +41,14 @@
   export default {
     data () {
       return {
-        page: 1,
+        pageNumber: 0,
         existPrev : false,
         existNext : true,
         arr: [6,7,8,9,10]
       }
     },
     created() {
-      alert('무비에서 크리티드 실행됨')
+      this.$store.dispatch("search/movies", this.searchWord, this.pageNumber)
     },
     computed: {
       ...mapState({

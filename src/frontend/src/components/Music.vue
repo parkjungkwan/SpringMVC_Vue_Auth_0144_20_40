@@ -38,6 +38,9 @@
         page: 1
       }
     },
+    created() {
+      alert('음악 페이지')
+    },
     computed: {
       ...mapState({
 

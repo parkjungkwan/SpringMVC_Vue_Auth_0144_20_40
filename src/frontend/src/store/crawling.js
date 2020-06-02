@@ -57,19 +57,7 @@ const mutations = {
       });
     });
   },
-  MOVIE(state, data){
-    alert("영화 뮤테이션에서 결과 수 : " + data.count);
-    state.navermovie = [];
-    state.count = data.count;
-    data.list.forEach(item => {
-      state.navermovie.push({
-        movieSeq: item.movieSeq,
-        rank: item.rank,
-        title: item.title,
-        rankDate: item.rankDate
-      });
-    });
-  }
+
 };
 const getters = {
   bugsmusic: state => state.bugsmusic,
