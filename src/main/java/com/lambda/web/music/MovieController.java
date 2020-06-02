@@ -24,9 +24,11 @@ public class MovieController {
         }else{
             pxy.print("검색어가 "+searchWord);
         }
+
         pager.setPageNow(pxy.integer(pageNumber));
         pager.setBlockSize(5);
         pager.setPageSize(5);
+        pager.paging();
         IFunction<Pager, List<MovieDTO>> f = p ->  movieMapper.selectMovies(p);
         List<MovieDTO> l = f.apply(pager);
         pxy.print("***********");
@@ -34,8 +36,9 @@ public class MovieController {
             pxy.print(m.toString());
         }
         box.clear();
-        box.put("count", l.size());
+        box.put("pager", pager);
         box.put("list", l);
+
         return box.get();
     }
 }
