@@ -12,7 +12,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="item of navermovie" :key="item.seq">
+      <tr v-for="item of list" :key="item.seq">
         <td>{{ item.movieSeq }}</td>
         <td>{{ item.rank}}</td>
         <td>{{ item.title }}</td>
@@ -45,7 +45,7 @@
         pageNumber: 0,
         existPrev : false,
         existNext : true,
-        arr: [6,7,8,9,10],
+        arr: [1,2,3,4,5],
         list: []
       }
     },
