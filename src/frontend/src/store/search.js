@@ -12,7 +12,6 @@ const state ={
 }
 const actions ={
     async find({commit},searchWord){
-        alert('>>> '+searchWord)
         commit("SEARCHWORD",searchWord)
         switch (searchWord) {
             case '영화': router.push("/Movie")
@@ -29,21 +28,7 @@ const actions ={
 
 }
 const mutations ={
-    MOVIE(state, data){
-        alert("영화 뮤테이션에서 결과 수 : " + data.count)
-        state.movies = []
-        state.pager = data.pager;
-        data.list.forEach(item => {
-            state.movies.push({
-                movieSeq: item.movieSeq,
-                rank: item.rank,
-                title: item.title,
-                rankDate: item.rankDate
-            });
-        });
-    },
     SEARCHWORD(state, data){
-        alert(`뮤테이션:: ${data}`)
         state.searchWord = data
     }
 }

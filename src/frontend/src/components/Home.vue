@@ -30,9 +30,6 @@
         value="Google 검색"
       />
     </div>
-    <div>
-      <h3>검색된 수: {{ count }}</h3>
-    </div>
     <div id="bottom">
       <div id="bottom_left">
         <a>광고</a>
@@ -53,9 +50,6 @@ export default {
     return {
       searchWord: ""
     };
-  },
-  created() {
-    alert('홈에서 크리티드 실행됨')
   },
   methods: {
     search() {
