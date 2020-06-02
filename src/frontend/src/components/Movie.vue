@@ -37,6 +37,7 @@
 
 <script>
   import { mapState } from "vuex";
+  import axios from "axios";
 
   export default {
     data () {
@@ -44,11 +45,19 @@
         pageNumber: 0,
         existPrev : false,
         existNext : true,
-        arr: [6,7,8,9,10]
+        arr: [6,7,8,9,10],
+        list: []
       }
     },
     created() {
-      this.$store.dispatch("search/movies", this.searchWord, this.pageNumber)
+        axios
+          .get(`${this.$store.state.search.context}/movies/${this.$store.state.search.searchWord}/${this.$store.state.search.pageNumber}`)
+          .then(res=>{
+            res.data.list.forEach(elem => {this.list.push(elem)})
+          })
+          .catch(err=>{
+            alert(`영화 통신 실패 ${err}`)
+          })
     },
     computed: {
       ...mapState({
