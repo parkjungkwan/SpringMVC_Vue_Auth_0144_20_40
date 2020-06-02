@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3>검색결과 : {{count}}</h3>
+  <h3>총게시글수 : {{pager.rowCount}}</h3>
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -24,7 +24,7 @@
   <div class="text-center" >
     <div style="margin: 0 auto; width: 500px; height: 100px">
       <span v-if ='existPrev' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">이전</span>
-      <span v-for='i of 5' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i + 5}}</span>
+      <span v-for='i of pages' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i}}</span>
       <span v-if ='existNext' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">다음</span>
     </div>
 
@@ -45,8 +45,10 @@
         pageNumber: 0,
         existPrev : false,
         existNext : true,
-        arr: [1,2,3,4,5],
-        list: []
+        pages: [1,2,3,4,5],
+        list: [],
+        pager: {},
+        totalCount: '',
       }
     },
     created() {
@@ -54,6 +56,7 @@
           .get(`${this.$store.state.search.context}/movies/${this.$store.state.search.searchWord}/${this.$store.state.search.pageNumber}`)
           .then(res=>{
             res.data.list.forEach(elem => {this.list.push(elem)})
+            this.pager = res.data.pager
           })
           .catch(err=>{
             alert(`영화 통신 실패 ${err}`)
