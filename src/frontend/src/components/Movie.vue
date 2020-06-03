@@ -12,7 +12,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="item of list" :key="item.seq">
+      <tr v-for="item of mlist" :key="item.seq">
         <td>{{ item.movieSeq }}</td>
         <td>{{ item.rank}}</td>
         <td>{{ item.title }}</td>
@@ -72,14 +72,16 @@
 
         count: state => state.crawling.count,
         bugsmusic: state => state.crawling.bugsmusic,
+        mlist: state => state.search.movies
 
       })
     },
     methods: {
       transferPage(d) {
+        alert(`이동 페이지 ${d-1}`)
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
                                                                   searchWord:'null',
-                                                                  pageNumber: d})
+                                                                  pageNumber: d-1})
       }
     }
   }
