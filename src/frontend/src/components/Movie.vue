@@ -41,24 +41,19 @@
 
   export default {
     data () {
-      return {
-        pageNumber: 0,
-        pages: [],
-        list: [],
-        pager: {},
-        totalCount: '',
-      }
+      return {}
     },
     created() {
       let json = paging(`${this.$store.state.search.context}/movies/null/0`)
-      this.list = json.movies
-      this.pages = json.pages
-      this.pager = json.temp
+      this.$store.state.search.list = json.movies
+      this.$store.state.search.pages = json.pages
+      this.$store.state.search.pager = json.temp
     },
     computed: {
       ...mapState({
-        count: state => state.crawling.count,
-        bugsmusic: state => state.crawling.bugsmusic,
+        list: state => state.search.list,
+        pages: state => state.search.pages,
+        pager: state => state.search.pager
       })
     },
     methods: {
