@@ -1,4 +1,5 @@
 import router from "@/router";
+import axios from "axios";
 
 const state ={
     context : "http://localhost:5000",
@@ -21,15 +22,25 @@ const actions ={
             case '축구': router.push("/Soccer")
                 break
         }
-
-
     },
+    async transferPage({commit},payload){
+        commit("TRANSFER",payload.pageNumber)
+        axios.
+            get(`${state.context}/${payload.cate}/${payload.searchWord}/${payload.pageNumber}`)
+            .then()
+            .catch()
+
+    }
+
 
 
 }
 const mutations ={
     SEARCHWORD(state, data){
         state.searchWord = data
+    },
+    TRANSFER(state, data){
+        state.pageNumber = data
     }
 }
 const getters ={}
