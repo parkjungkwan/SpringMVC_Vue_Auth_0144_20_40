@@ -23,6 +23,7 @@ const actions ={
         }
     },
     async transferPage({commit},payload){
+        alert(`${state.context}/${payload.cate}/${payload.searchWord}/${payload.pageNumber}`)
 
         axios.
             get(`${state.context}/${payload.cate}/${payload.searchWord}/${payload.pageNumber}`)
@@ -42,7 +43,7 @@ const mutations ={
     },
     TRANSFER(state, data){
         state.pager = data.pager
-        state.movies = data.list
+        state.list = data.list
     }
 }
 
