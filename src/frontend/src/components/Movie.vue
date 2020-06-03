@@ -1,6 +1,7 @@
 <template>
 <div>
   <h3>총게시글수 : {{pager.rowCount}}</h3>
+  <a @click="myAlert('aaaa')">테스트</a>
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -36,18 +37,17 @@
 </template>
 
 <script>
-  import { mapState } from "vuex";
-  import axios from "axios";
-
+  import { mapState } from "vuex"
+  import {proxy} from "./mixins/proxy"
   export default {
-    data () {
-      return {}
-    },
+    mixins: [proxy],
     created() {
-      let json = paging(`${this.$store.state.search.context}/movies/null/0`)
+      console.log('페이징 가기 전 : ')
+      let json = proxy.methods.paging(`${this.$store.state.search.context}/movies/null/0`)
       this.$store.state.search.list = json.movies
       this.$store.state.search.pages = json.pages
       this.$store.state.search.pager = json.temp
+      console.log('페이징 다녀온 다음 : '+json.temp.pageSize)
     },
     computed: {
       ...mapState({
@@ -58,37 +58,11 @@
     },
     methods: {
       transferPage(d) {
-        alert(`이동 페이지 ${d-1}`)
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
                                                                   searchWord:'null',
                                                                   pageNumber: d-1})
       }
     }
   }
-function paging(d) {
-  const movies = []
-  const pages = []
-  let temp = {}
-  axios
-          .get(d)
-          .then(({data})=>{
-            data.list.forEach(elem => {movies.push(elem)})
-            let pager = data.pager
-            alert('>>'+pager.rowCount)
-            let i = pager.pageStart +1
 
-            console.log(`페이지 끝: ${pager.pageEnd}`)
-            for(; i <= pager.pageEnd + 1;i++){
-              pages.push(i)
-            }
-            temp.rowCount = pager.rowCount
-            temp.existPrev = pager.existPrev
-            temp.existNext = pager.existNext
-          })
-          .catch(err=>{
-            alert(`영화 통신 실패 ${err}`)
-          })
-
-  return {movies, pages, temp}
-}
 </script>
