@@ -12,7 +12,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="item of mlist" :key="item.seq">
+      <tr v-for="item of list" :key="item.seq">
         <td>{{ item.movieSeq }}</td>
         <td>{{ item.rank}}</td>
         <td>{{ item.title }}</td>
@@ -50,30 +50,15 @@
       }
     },
     created() {
-        axios
-          .get(`${this.$store.state.search.context}/movies/${this.$store.state.search.searchWord}/${this.$store.state.search.pageNumber}`)
-          .then(({data})=>{
-            data.list.forEach(elem => {this.list.push(elem)})
-            this.pager = data.pager
-            let i = this.pager.pageStart +1
-            const arr = []
-            console.log(`페이지 끝: ${this.pager.pageEnd}`)
-            for(; i <= this.pager.pageEnd + 1;i++){
-              arr.push(i)
-            }
-            this.pages = arr
-          })
-          .catch(err=>{
-            alert(`영화 통신 실패 ${err}`)
-          })
+      let json = paging(`${this.$store.state.search.context}/movies/null/0`)
+      this.list = json.movies
+      this.pages = json.pages
+      this.pager = json.temp
     },
     computed: {
       ...mapState({
-
         count: state => state.crawling.count,
         bugsmusic: state => state.crawling.bugsmusic,
-        mlist: state => state.search.movies
-
       })
     },
     methods: {
@@ -85,5 +70,30 @@
       }
     }
   }
+function paging(d) {
+  const movies = []
+  const pages = []
+  let temp = {}
+  axios
+          .get(d)
+          .then(({data})=>{
+            data.list.forEach(elem => {movies.push(elem)})
+            let pager = data.pager
+            alert('>>'+pager.rowCount)
+            let i = pager.pageStart +1
 
+            console.log(`페이지 끝: ${pager.pageEnd}`)
+            for(; i <= pager.pageEnd + 1;i++){
+              pages.push(i)
+            }
+            temp.rowCount = pager.rowCount
+            temp.existPrev = pager.existPrev
+            temp.existNext = pager.existNext
+          })
+          .catch(err=>{
+            alert(`영화 통신 실패 ${err}`)
+          })
+
+  return {movies, pages, temp}
+}
 </script>
