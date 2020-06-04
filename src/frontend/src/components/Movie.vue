@@ -1,6 +1,7 @@
 <template>
 <div>
   <h3>총게시글수 : {{pager.rowCount}}</h3>
+  <span style="float: right"><input id="searchWord" type="text" style="border: 1px solid black"><button @click="aaa">검 색</button></span>
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -61,6 +62,9 @@
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
                                                                   searchWord:'null',
                                                                   pageNumber: d})
+      },
+      aaa(){
+        proxy.methods.tester(document.getElementById('searchWord').value)
       }
     }
   }
