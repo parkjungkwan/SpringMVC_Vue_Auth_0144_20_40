@@ -44,4 +44,11 @@ public class MovieController {
         box.put("list", list);
         return box.get();
     }
+    @GetMapping("/{searchWord}")
+    public Map<?,?> detail(@PathVariable("searchWord") String searchWord){
+        pxy.print("검색어가 "+searchWord);
+        box.clear();
+        return box.get();
+    }
+
 }

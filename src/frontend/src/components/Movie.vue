@@ -17,7 +17,7 @@
       <tr v-for="item of list" :key="item.seq">
         <td>{{ item.movieSeq }}</td>
         <td>{{ item.rank}}</td>
-        <td>{{ item.title }}</td>
+        <td><a @click="retrieveOne(item.movieSeq)" href="#">{{ item.title }}</a></td>
         <td>{{ item.rankDate }}</td>
       </tr>
       </tbody>
@@ -69,6 +69,11 @@
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
                                                                 searchWord:searchWord,
                                                                 pageNumber: 0})
+
+      },
+      retrieveOne(movieSeq){
+        this.$store.dispatch('search/retrieveOne',{cate:'movies' ,
+          searchWord:movieSeq})
 
       }
     }
