@@ -1,7 +1,6 @@
 <template>
 <div>
   <h3>총게시글수 : {{pager.rowCount}}</h3>
-  <a @click="myAlert('aaaa')">테스트</a>
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -24,9 +23,9 @@
   </v-simple-table>
   <div class="text-center" >
     <div style="margin: 0 auto; width: 500px; height: 100px">
-      <span v-if ='pager.existPrev' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">이전</span>
-      <span @click="transferPage(i)" v-for='i of pages' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i}}</span>
-      <span id="aa" v-if ='pager.existNext' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">다음</span>
+      <span @click="transferPage(pager.prevBlock)" v-if ='pager.existPrev' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">이전</span>
+      <span @click="transferPage(i-1)" v-for='i of pages' :key="i" style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">{{i}}</span>
+      <span @click="transferPage(pager.nextBlock)" v-if ='pager.existNext' style="width: 50px; height: 50px; border: 1px solid black;margin-right: 5px">다음</span>
     </div>
 
     <!--<v-pagination v-model="page" :length="5" :total-visible="5"></v-pagination>-->
@@ -58,9 +57,10 @@
     },
     methods: {
       transferPage(d) {
+        proxy.methods.tester(d)
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
                                                                   searchWord:'null',
-                                                                  pageNumber: d-1})
+                                                                  pageNumber: d})
       }
     }
   }

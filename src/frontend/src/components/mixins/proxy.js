@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const proxy={
     methods: {
-        myAlert(d){
+        tester(d){
             alert(d)
         },
         paging(url){
@@ -21,9 +21,11 @@ export const proxy={
                     temp.rowCount = pager.rowCount
                     temp.existPrev = pager.existPrev
                     temp.existNext = pager.existNext
+                    temp.nextBlock = pager.nextBlock
+                    temp.prevBlock = pager.prevBlock
                 })
                 .catch(err=>{
-                    alert(`영화 통신 실패 ${err}`)
+                    alert(`통신 실패 ${err}`)
                 })
 
             return {movies, pages, temp}
