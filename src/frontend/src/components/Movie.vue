@@ -1,7 +1,8 @@
 <template>
 <div>
   <h3>총게시글수 : {{pager.rowCount}}</h3>
-  <span style="float: right"><input id="searchWord" type="text" style="border: 1px solid black"><button @click="aaa">검 색</button></span>
+  <span style="float: right"><input id="searchWord" type="text" style="border: 1px solid black">
+    <button @click="retrieve">검 색</button></span>
   <v-simple-table>
     <template v-slot:default>
       <thead>
@@ -33,7 +34,6 @@
   </div>
 </div>
 
-
 </template>
 
 <script>
@@ -63,8 +63,12 @@
                                                                   searchWord:'null',
                                                                   pageNumber: d})
       },
-      aaa(){
-        proxy.methods.tester(document.getElementById('searchWord').value)
+      retrieve(){
+
+        this.$store.dispatch('search/transferPage',{cate:'movies' ,
+                                                                searchWord:document.getElementById('searchWord').value,
+                                                                pageNumber: 0})
+
       }
     }
   }

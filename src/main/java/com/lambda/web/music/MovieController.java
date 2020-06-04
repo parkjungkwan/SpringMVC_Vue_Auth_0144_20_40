@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 @RestController
 @RequestMapping("/movies")
@@ -28,8 +30,9 @@ public class MovieController {
         pager.setPageNow(pxy.integer(pageNumber));
         pager.setBlockSize(5);
         pager.setPageSize(5);
+        if(!searchWord.equals("null")) pager.setSearchWord(searchWord);
         pager.paging();
-        IFunction<Pager, List<MovieDTO>> f = p ->  movieMapper.selectMovies(p);
+        Function<Pager, List<MovieDTO>> f = p ->  movieMapper.selectMovies(p);
         List<MovieDTO> list = f.apply(pager);
         pxy.print("***********");
         for(MovieDTO m : list){
