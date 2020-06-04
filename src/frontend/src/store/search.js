@@ -7,7 +7,8 @@ const state ={
     pageNumber: '0',
     list : [],
     pages : [],
-    pager: {}
+    pager: {},
+    item: {}
 
 }
 const actions ={
@@ -35,22 +36,24 @@ const actions ={
         axios.
             get(`${state.context}/${payload.cate}/${payload.searchWord}`)
             .then(({data})=>{
-                commit("TRANSFER",data)
+                commit("DETAIL",data)
+                router.push('/movieDetail')
             })
             .catch()
     }
-
-
-
 }
 const mutations ={
+    DETAIL(state, data){
+        state.item = data
+    },
     SEARCHWORD(state, data){
         state.searchWord = data
     },
     TRANSFER(state, data){
         state.pager = data.pager
         state.list = data.list
-    }
+    },
+
 }
 
 

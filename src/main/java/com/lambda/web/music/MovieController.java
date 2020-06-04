@@ -45,10 +45,8 @@ public class MovieController {
         return box.get();
     }
     @GetMapping("/{searchWord}")
-    public Map<?,?> detail(@PathVariable("searchWord") String searchWord){
-        pxy.print("검색어가 "+searchWord);
-        box.clear();
-        return box.get();
+    public MovieDTO detail(@PathVariable("searchWord") String searchWord){
+        return movieMapper.selectMovie(searchWord);
     }
 
 }
