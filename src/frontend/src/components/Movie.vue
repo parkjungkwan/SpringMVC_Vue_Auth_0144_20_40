@@ -64,9 +64,10 @@
                                                                   pageNumber: d})
       },
       retrieve(){
-
+        let searchWord = document.getElementById('searchWord').value
+        if(searchWord === '') searchWord = 'null'
         this.$store.dispatch('search/transferPage',{cate:'movies' ,
-                                                                searchWord:document.getElementById('searchWord').value,
+                                                                searchWord:searchWord,
                                                                 pageNumber: 0})
 
       }

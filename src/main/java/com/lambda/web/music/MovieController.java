@@ -21,16 +21,17 @@ public class MovieController {
     public Map<?,?> list(@PathVariable("pageNumber") String pageNumber,
                                     @PathVariable("searchWord") String searchWord){
 
-        if(searchWord.equals("")){
+        if(searchWord.equals("null")){
             pxy.print("검색어가 없음");
+            pager.setSearchWord("");
         }else{
             pxy.print("검색어가 "+searchWord);
+            pager.setSearchWord(searchWord);
         }
         pxy.print("넘어온 페이지번호: "+pageNumber);
         pager.setPageNow(pxy.integer(pageNumber));
         pager.setBlockSize(5);
         pager.setPageSize(5);
-        if(!searchWord.equals("null")) pager.setSearchWord(searchWord);
         pager.paging();
         Function<Pager, List<MovieDTO>> f = p ->  movieMapper.selectMovies(p);
         List<MovieDTO> list = f.apply(pager);
